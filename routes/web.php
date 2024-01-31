@@ -17,6 +17,10 @@ Route::get('/login', function () {
     return view('users.login');
 });
 
+Route::get('/movimenti/create', function () {
+    return view('movements.create');
+});
+
 Route::get('/', function() {
     return view('home');
 });

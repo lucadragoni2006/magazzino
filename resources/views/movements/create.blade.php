@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-    <form class="container align-itmes-center justify-content-center shadow p-4 rounded gap-3 w-25">
+    <form class="container align-itmes-center justify-content-center shadow p-4 rounded gap-3 w-50">
         <div class="mb-5 text-center">
-            <h2>Crea un Articolo</h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-            </svg>
+            <h2>Movimento di Magazzino</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg>
         </div>
         <div class="row">
             <div class="col form-floating mb-3 ps-1">
@@ -62,11 +62,7 @@
                 <label for="descrizione">Breve Descrizione</label>
             </div>
         </div>
-        <div class="row">
-            <div class="col form-floating mb-3 ps-1">
-                <button type="submit" class="btn btn-success btn-lg w-100">Crea Articolo</button>
-            </div>
-        </div>
+       {{--  <button type="submit" class="btn btn-primary btn-lg">Submit</button> --}}
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
