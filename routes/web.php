@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticoloController;
+use App\Http\Controllers\MovimentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/login', function () {
-    return view('users.login');
+    return view('utenti.login');
 });
 
 Route::get('/movimenti/create', function () {
-    return view('movements.create');
+    return view('movimenti.create');
 });
 
 Route::get('/', function() {
@@ -26,5 +28,9 @@ Route::get('/', function() {
 });
 
 Route::get('/articoli/create', function() {
-    return view('items.create');
+    return view('articoli.create');
 });
+
+Route::get('/movimenti', [MovimentoController::class, 'index']);
+
+Route::get('/articoli', [ArticoloController::class, 'index']);
