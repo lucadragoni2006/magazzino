@@ -27,10 +27,31 @@ Route::get('/', function() {
     return view('home');
 });
 
-Route::get('/articoli/create', function() {
-    return view('articoli.create');
-});
 
+// Mostra la tabella Articoli
+Route::get('/articoli', [ArticoloController::class, 'index']);
+
+// Elimina l'articolo selezionato
+Route::delete('/articoli/{articolo}/delete', [ArticoloController::class, 'delete']);
+
+// Mostra il form articoli
+Route::get('/articoli/create', [ArticoloController::class, 'create']);
+
+// Crea un nuovo articolo
+Route::post('/articoli/store', [ArticoloController::class, 'store']);
+
+// Mostra il form per la modifica articolo
+Route::get('/articoli/{articolo}/edit', [ArticoloController::class, 'edit']);
+
+// Modifica l'articolo selezionato
+Route::put('/articoli/{articolo}', [ArticoloController::class, 'update']);
+
+
+// Mostra la tabella Movimenti
 Route::get('/movimenti', [MovimentoController::class, 'index']);
 
-Route::get('/articoli', [ArticoloController::class, 'index']);
+// Mostra il form Movimenti
+Route::get('/movimenti/create', [MovimentoController::class, 'create']);
+
+// Crea un nuovo movimento
+Route::post('/movimenti/store', [MovimentoController::class, 'store']);

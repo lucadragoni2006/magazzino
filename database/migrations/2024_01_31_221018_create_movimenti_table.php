@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('numdocumento');
             $table->date('datadocumento');
             $table->integer('qtamovimentata');
-            $table->double('valunitario', 5, 2);
-            $table->double('sconto', 2, 2);
+            $table->double('valunitario', 7, 2);
+            $table->double('sconto', 4, 2);
             $table->timestamps();
         });
     }

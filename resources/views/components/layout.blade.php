@@ -47,7 +47,7 @@
                     </li>
                 </ul>
                 <form class="d-flex" data-bs-theme="light" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Ricerca" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Ricerca" aria-label="Search" name="research">
                     <button class="btn btn-primary text-light" type="submit">Ricerca</button>
                 </form>
             </div>

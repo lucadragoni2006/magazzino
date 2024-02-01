@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('descrizione', 30)->index();
             $table->char('unitadimisura', 2);
             $table->integer('qtainiziale');
-            $table->double('valiniziale', 7, 2);
+            $table->double('valiniziale', 9, 2);
             $table->integer('qtacarichi');
-            $table->double('valcarichi', 7, 2);
+            $table->double('valcarichi', 9, 2);
             $table->integer('qtascarichi');
-            $table->double('valscarichi', 7, 2);
-            $table->double('iva', 2, 2);
-            $table->double('przvendita', 6, 2);
+            $table->double('valscarichi', 9, 2);
+            $table->double('iva', 4, 2);
+            $table->double('przvendita', 8, 2);
             $table->timestamps();
         });
     }

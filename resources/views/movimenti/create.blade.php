@@ -1,6 +1,7 @@
 <x-layout>
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-        <form class="d-flex align-itmes-center justify-content-center flex-column shadow p-4 rounded" style="width: 400px;">
+        <form action="/movimenti/store" method="POST" class="d-flex align-itmes-center justify-content-center flex-column shadow p-4 rounded" style="width: 400px;">
+            @csrf
             <div class="mb-5 text-center">
                 <h2>Aggiungi Movimento</h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" fill="currentColor" class="bi bi-journal-text mt-1" viewBox="0 0 16 16">
@@ -10,10 +11,10 @@
                 </svg>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="cod">
+                <input type="text" class="form-control" id="cod" name="codice">
                 <label for="cod">Codice Articolo</label>
             </div>
-            <select class="form-select mb-3" aria-label="Default select example">
+            <select class="form-select mb-3" aria-label="Default select example" name="causale">
                 <option selected disabled>Causale</option>
                 <option value="0">Saldo Iniziale</option>
                 <option value="1">Acquisto</option>
@@ -22,23 +23,23 @@
                 <option value="4">Reso Fornitore</option>
             </select>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="documento">
+                <input type="number" class="form-control" id="documento" name="numdocumento">
                 <label for="documento">Numero Documento</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="date" id="data" class="form-control">
+                <input type="date" id="data" class="form-control" name="datadocumento">
                 <label for="data">Data Documento</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="quantita">
+                <input type="number" class="form-control" id="quantita" name="qtamovimentata">
                 <label for="quantita">Quantità da Movimentare</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="valore">
+                <input type="text" class="form-control" id="valore" name="valunitario">
                 <label for="valore">Valore Unitario</label>
             </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="sconto">
+            <div class="form-floating mb-3" name="sconto">
+                <input type="text" class="form-control" id="sconto">
                 <label for="sconto">Sconto</label>
             </div>
             <button type="submit" class="btn btn-danger btn-lg">Aggiungi</button>

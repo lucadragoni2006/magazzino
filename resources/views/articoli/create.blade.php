@@ -1,6 +1,7 @@
 <x-layout>
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-        <form class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
+        <form method="POST" action="/articoli/store" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
+            @csrf
             <div class="mb-5 text-center">
                 <h2>Aggiungi un Articolo</h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" fill="currentColor" class="bi bi-cart2 " viewBox="0 0 16 16">
@@ -9,58 +10,91 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="cod" placeholder="Codice">
+                    <input type="text" class="form-control" id="cod" placeholder="Codice" name="codice" value="{{old('codice')}}">
                     <label for="cod">Codice</label>
+                    @error('codice')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="udm" placeholder="Unità di misura">
+                    <input type="text" class="form-control" id="udm" placeholder="Unità di misura" name="unitadimisura" value="{{old('unitadimisura')}}">
                     <label for="udm">Unità di Misura</label>
+                    @error('unitadimisura')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaIniziale" placeholder="Quantità iniziale">
+                    <input type="number" class="form-control" id="quantitaIniziale" placeholder="Quantità iniziale" name="qtainiziale" value="{{old('qtainiziale')}}">
                     <label for="quantitaIniziale">Quantità Iniziale</label>
+                    @error('qtainiziale')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="valoreIniziale" placeholder="Valore iniziale">
+                    <input type="text" class="form-control" id="valoreIniziale" placeholder="Valore iniziale" name="valiniziale" value="{{old('valiniziale')}}">
                     <label for="valoreIniziale">Valore Iniziale</label>
+                    @error('valiniziale')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaScarichi" placeholder="Quantità scarichi">
-                    <label for="quantitaScarichi">Quantità Scarichi</label>
-                </div>
-                <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="valoreScarichi" placeholder="Valore scarichi">
-                    <label for="valoreScarichi">Valore Scarichi</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaCarichi" placeholder="Quantità carichi">
+                    <input type="number" class="form-control" id="quantitaCarichi" placeholder="Quantità carichi" name="qtacarichi" value="{{old('qtacarichi')}}">
                     <label for="quantitaCarichi">Quantità Carichi</label>
+                    @error('qtacarichi')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="valoreCarichi" placeholder="Valore carichi">
+                    <input type="text" class="form-control" id="valoreCarichi" placeholder="Valore carichi" name="valcarichi" value="{{old('valcarichi')}}">
                     <label for="valoreCarichi">Valore Carichi</label>
+                    @error('valcarichi')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="IVA" placeholder="Quantità carichi">
+                    <input type="number" class="form-control" id="quantitaScarichi" placeholder="Quantità scarichi" name="qtascarichi" value="{{old('qtascarichi')}}">
+                    <label for="quantitaScarichi">Quantità Scarichi</label>
+                    @error('qtascarichi')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="text" class="form-control" id="valoreScarichi" placeholder="Valore scarichi" name="valscarichi" value="{{old('valscarichi')}}">
+                    <label for="valoreScarichi">Valore Scarichi</label>
+                    @error('valscarichi')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="text" class="form-control" id="IVA" placeholder="Quantità carichi" name="iva" value="{{old('iva')}}">
                     <label for="IVA">Aliquota IVA</label>
+                    @error('iva')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="prezzo-vendita" placeholder="Valore carichi">
+                    <input type="text" class="form-control" id="prezzo-vendita" placeholder="Valore carichi" name="przvendita" value="{{old('przvendita')}}">
                     <label for="prezzo-vendita">Prezzo Vendita</label>
+                    @error('przvendita')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="textarea" class="form-control" id="descrizione" placeholder="Descrizione">
-                    <label for="descrizione">Breve Descrizione</label>
+                    <input type="text" class="form-control" id="Descrizione" placeholder="Descrizione" name="descrizione" value="{{old('descrizione')}}">
+                    <label for="Descrizione">Breve Descrizione</label>
+                    @error('descrizione')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             <div class="row">

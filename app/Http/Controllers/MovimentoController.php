@@ -7,7 +7,22 @@ use Illuminate\Http\Request;
 
 class MovimentoController extends Controller
 {
+    // mostra tabella dei movimenti
     public function index() {
-        return view('movimenti.index');
+        return view('movimenti.index', [
+            'movimenti' => Movimento::paginate(10)
+        ]);
+    }
+
+    // Mostra form per creare movimenti
+    public function create() {
+        return view('movimenti.create');
+    }
+
+    // Crea e Memorizza nel db un movimento 
+    public function store(Request $request) {
+        $form = $request->validate([
+            'codice' => 'unique'
+        ]);
     }
 }
