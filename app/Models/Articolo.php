@@ -18,4 +18,12 @@ class Articolo extends Model
     public function movimenti() {
         return $this->hasMany(Movimento::class, 'codice');
     }
+
+    // filtro di ricerca
+    public function scopeFilter($query, array $filtri) {
+        if($filtri['search'] ?? false) {
+            $query->where('codice', 'like', '%' . request('search') .'%')
+                ->orWhere('descrizione', 'like', '%' . request('search') . '%');
+        }
+    }
 }

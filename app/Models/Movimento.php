@@ -18,4 +18,12 @@ class Movimento extends Model
     public function articoli() {
         return $this->belongsTo(Articolo::class, 'codice');
     }
+
+    // filtro di ricerca
+    public function scopeFilter($query, array $filtri) {
+        if($filtri['search'] ?? false) {
+            $query->where('codice', 'like', request('search') . '%')
+                ->orWhere('causale', 'like', request('search'));
+        }
+    }
 }
