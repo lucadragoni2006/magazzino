@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Movimento;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class MovimentoController extends Controller
 {
@@ -22,7 +24,7 @@ class MovimentoController extends Controller
     // Crea e Memorizza nel db un movimento 
     public function store(Request $request) {
         $form = $request->validate([
-            'codice' => 'unique'
+            'codice' => [''],
         ]);
     }
 }

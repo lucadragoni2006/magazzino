@@ -1,6 +1,6 @@
 <x-layout>
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-        <form action="/movimenti/store" method="POST" class="d-flex align-itmes-center justify-content-center flex-column shadow p-4 rounded" style="width: 400px;">
+        <form action="/movimenti/store" method="POST" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
             @csrf
             <div class="mb-5 text-center">
                 <h2>Aggiungi Movimento</h2>
@@ -10,39 +10,65 @@
                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
                 </svg>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="cod" name="codice">
-                <label for="cod">Codice Articolo</label>
+            <div class="row">
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="text" class="form-control" id="cod" name="codice" placeholder="Codice">
+                    <label for="cod">Codice Articolo</label>
+                </div>
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="number" class="form-control" id="quantita" name="qtamovimentata" placeholder="quantita">
+                    <label for="quantita">Q.tà Movimentata</label>
+                </div>
             </div>
-            <select class="form-select mb-3" aria-label="Default select example" name="causale">
-                <option selected disabled>Causale</option>
-                <option value="0">Saldo Iniziale</option>
-                <option value="1">Acquisto</option>
-                <option value="2">Vendita</option>
-                <option value="3">Reso Cliente</option>
-                <option value="4">Reso Fornitore</option>
-            </select>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="documento" name="numdocumento">
-                <label for="documento">Numero Documento</label>
+            <div class="row">
+                <div class="col form-floating-mb-3 ps-1">
+                    <input type="text" class="form-control" name="descrizione" id="descr" placeholder="Descrizione" disabled>
+                    <label for="descr"></label>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="date" id="data" class="form-control" name="datadocumento">
-                <label for="data">Data Documento</label>
+            <div class="row">
+                <div class="mb-3 ps-1">
+                    <select class="form-select" aria-label="Default select example" name="causale">
+                        <option selected disabled>Causale</option>
+                        <option value="0">Saldo Iniziale</option>
+                        <option value="1">Acquisto</option>
+                        <option value="2">Vendita</option>
+                        <option value="3">Reso Cliente</option>
+                        <option value="4">Reso Fornitore</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="quantita" name="qtamovimentata">
-                <label for="quantita">Quantità da Movimentare</label>
+            <div class="row">
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="date" id="data" class="form-control" name="datadocumento">
+                    <label for="data">Data Documento</label>
+                </div>
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="number" class="form-control" id="documento" name="numdocumento" placeholder="numerodocumento">
+                    <label for="documento">Num. Documento</label>
+                </div>
             </div>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="valore" name="valunitario">
-                <label for="valore">Valore Unitario</label>
+            <div class="row">
+                <div class="col form-floating mb-3 ps-1">
+                    <input type="text" class="form-control" id="valore" name="valunitario" placeholder="val">
+                    <label for="valore">Valore Unitario</label>
+                </div>
+                <div class="col form-floating mb-3 ps-1" name="sconto">
+                    <input type="text" class="form-control" id="sconto" placeholder="scon">
+                    <label for="sconto">Sconto</label>
+                </div>
             </div>
-            <div class="form-floating mb-3" name="sconto">
-                <input type="text" class="form-control" id="sconto">
-                <label for="sconto">Sconto</label>
+            <div class="row">
+                <div class="col form-floating-mb3 ps-1">
+                    <input type="text" class="form-control" name="costo" id="costo" placeholder="Costo" disabled>
+                    <label for="costo"></label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-danger btn-lg">Aggiungi</button>
+            <div class="row">
+                <div class="col form-floating mb-3 ps-1">
+                    <button type="submit" class="btn btn-danger btn-lg w-100">Aggiungi</button>
+                </div>
+            </div>
         </form>
     </div>
 </x-layout>
