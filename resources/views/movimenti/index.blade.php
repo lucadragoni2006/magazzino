@@ -32,7 +32,7 @@
 						</a>
 					</td>
 					<td>
-						<form action="/movimenti/{{$movimento->id}}/delete" method="post">
+						<form action="/movimenti/{{$movimento->id}}/delete" method="POST">
 							@csrf
 							@method('DELETE')
 							<button class="bg-transparent border-0">

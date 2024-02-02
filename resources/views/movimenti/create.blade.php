@@ -12,12 +12,18 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="cod" name="codice" placeholder="Codice">
+                    <input type="text" class="form-control" id="cod" name="codice" placeholder="Codice" value="{{old('codice')}}">
                     <label for="cod">Codice Articolo</label>
+                    @error('codice')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantita" name="qtamovimentata" placeholder="quantita">
+                    <input type="number" class="form-control" id="quantita" name="qtamovimentata" placeholder="quantita" value="{{old('qtamovimentata')}}">
                     <label for="quantita">Q.tà Movimentata</label>
+                    @error('qtamovimentata')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
             </div>
             <div class="row">
@@ -36,26 +42,41 @@
                         <option value="3">Reso Cliente</option>
                         <option value="4">Reso Fornitore</option>
                     </select>
+                    @error('causale')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="date" id="data" class="form-control" name="datadocumento">
+                    <input type="date" id="data" class="form-control" name="datadocumento" value="{{old('datadocumento')}}">
                     <label for="data">Data Documento</label>
+                    @error('datadocumento')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="documento" name="numdocumento" placeholder="numerodocumento">
+                    <input type="number" class="form-control" id="documento" name="numdocumento" placeholder="numerodocumento" value="{{old('numdocumento')}}">
                     <label for="documento">Num. Documento</label>
+                    @error('numdocumento')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="valore" name="valunitario" placeholder="val">
+                    <input type="text" class="form-control" id="valore" name="valunitario" placeholder="val" value="{{old('valunitario')}}">
                     <label for="valore">Valore Unitario</label>
+                    @error('valunitario')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1" name="sconto">
-                    <input type="text" class="form-control" id="sconto" placeholder="scon">
+                    <input type="text" class="form-control" id="sconto" placeholder="scon" name="sconto" value="{{old('sconto')}}">
                     <label for="sconto">Sconto</label>
+                    @error('sconto')
+                        <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
+                    @enderror
                 </div>
             </div>
             <div class="row">

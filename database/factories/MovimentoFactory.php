@@ -17,7 +17,6 @@ class MovimentoFactory extends Factory
     public function definition(): array
     {
         return [
-            'codice' => $this->faker->unique()->numerify('#############'),
             'causale' => $this->faker->numberBetween(0, 4),
             'numdocumento' => $this->faker->numberBetween(10000, 99999),
             'datadocumento' => $this->faker->date(),

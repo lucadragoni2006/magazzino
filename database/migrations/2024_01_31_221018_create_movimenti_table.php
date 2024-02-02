@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('movimenti', function (Blueprint $table) {
             $table->id();
-            $table->string('codice', 13)->unique();
-            $table->tinyInteger('causale');
-            $table->integer('numdocumento');
-            $table->date('datadocumento');
+            $table->string('codice', 13);
+            $table->foreign('codice')->references('codice')->on('articoli')->constrained()->onDelete('cascade');
             $table->integer('qtamovimentata');
+            $table->tinyInteger('causale');
+            $table->date('datadocumento');
+            $table->integer('numdocumento');
             $table->double('valunitario', 7, 2);
-            $table->double('sconto', 4, 2);
+            $table->double('sconto', 4, 2)->nullable();
             $table->timestamps();
         });
     }

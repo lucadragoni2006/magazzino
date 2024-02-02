@@ -50,6 +50,9 @@ Route::put('/articoli/{articolo}', [ArticoloController::class, 'update']);
 // Mostra la tabella Movimenti
 Route::get('/movimenti', [MovimentoController::class, 'index']);
 
+// Elimina l'articolo selezionato
+Route::delete('/movimenti/{movimento}/delete', [MovimentoController::class, 'delete']);
+
 // Mostra il form Movimenti
 Route::get('/movimenti/create', [MovimentoController::class, 'create']);
 

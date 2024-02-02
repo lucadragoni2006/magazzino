@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Movimento;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Articolo extends Model
 {
@@ -12,4 +13,9 @@ class Articolo extends Model
     protected $fillable = ['codice', 'descrizione', 'unitadimisura', 'qtainiziale', 'valiniziale', 'qtacarichi', 'valcarichi', 'qtascarichi', 'valscarichi', 'iva', 'przvendita'];
 
     use HasFactory;
+
+    // Relationship with Movimenti
+    public function movimenti() {
+        return $this->hasMany(Movimento::class, 'codice');
+    }
 }

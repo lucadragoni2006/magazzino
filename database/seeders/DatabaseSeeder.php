@@ -14,8 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\Articolo::factory(80)->create();
-        \App\Models\Movimento::factory(80)->create();
+        $articoli = \App\Models\Articolo::factory(80)->create();
+
+        foreach ($articoli as $articolo) {
+            \App\Models\Movimento::factory(5)->create([
+                'codice' => $articolo->codice
+            ]);
+        }
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
