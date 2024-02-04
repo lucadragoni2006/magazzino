@@ -22,7 +22,7 @@ class Articolo extends Model
     // filtro di ricerca
     public function scopeFilter($query, array $filtri) {
         if($filtri['search'] ?? false) {
-            $query->where('codice', 'like', '%' . request('search') .'%')
+            $query->where('codice', 'like', request('search') .'%')
                 ->orWhere('descrizione', 'like', '%' . request('search') . '%');
         }
     }

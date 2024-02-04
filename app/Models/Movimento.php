@@ -23,7 +23,7 @@ class Movimento extends Model
     public function scopeFilter($query, array $filtri) {
         if($filtri['search'] ?? false) {
             $query->where('codice', 'like', request('search') . '%')
-                ->orWhere('causale', 'like', request('search'));
+                ->orWhere('causale', 'like', '%' . request('search') .'%');
         }
     }
 }

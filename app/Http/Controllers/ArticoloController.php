@@ -9,9 +9,9 @@ use Illuminate\Validation\Rule;
 class ArticoloController extends Controller
 {
     // Mostra la tabella articoli
-    public function index(Request $request) {
+    public function index() {
         return view('articoli.index', [
-            'articoli' => Articolo::latest()->filter(request(['search']))->paginate(10)
+            'articoli' => Articolo::latest()->filter(request(['search']))->paginate(10)->withQueryString()
         ]);
     }
 

@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $articoli = \App\Models\Articolo::factory(80)->create();
+        $articoli = \App\Models\Articolo::factory(100)->create();
 
         foreach ($articoli as $articolo) {
-            \App\Models\Movimento::factory(5)->create([
+            \App\Models\Movimento::factory(10)->create([
                 'codice' => $articolo->codice
             ]);
         }

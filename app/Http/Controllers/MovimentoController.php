@@ -11,15 +11,8 @@ class MovimentoController extends Controller
 {
     // mostra tabella dei movimenti
     public function index() {
-        $lunghezza = count(Movimento::all());
-        $querySearch = request()->query('search');
-        if($lunghezza > 10 && $querySearch != 0 && $querySearch != null) {
-            return view('movimenti.index', [
-                'movimenti' => Movimento::latest()->filter(request(['search']))->paginate($lunghezza)
-            ]);
-        }
         return view('movimenti.index', [
-            'movimenti' => Movimento::latest()->filter(['search'])->paginate(10)
+            'movimenti' => Movimento::latest()->filter(request(['search']))->paginate(10)->withQueryString()
         ]);
     }
 
