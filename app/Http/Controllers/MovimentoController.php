@@ -63,7 +63,7 @@ class MovimentoController extends Controller
             'causale' => ['required', 'between:0,4'],
             'datadocumento' => ['required', 'date'],
             'numdocumento' => ['required', 'max:9999999999'],
-            'valunitario' => ['required', 'decimal:0,2', 'between:0,99999.99'],
+            'valunitario' => ['required', 'decimal:0,4', 'between:0,99999.99'],
             'sconto' => ['decimal:0,2', 'between:0,99.99'],
         ]);
 
@@ -74,7 +74,7 @@ class MovimentoController extends Controller
         return redirect('/movimenti');
     }
 
-    // Elimina l'articolo selezionato
+    // Elimina il movimento selezionato
     public function delete(Movimento $movimento) {
         $movimento->delete();
         return redirect('/movimenti');

@@ -40,13 +40,13 @@ class ArticoloController extends Controller
             'descrizione' => ['required', 'max:30'],
             'unitadimisura' => ['required', 'max:2'],
             'qtainiziale' => ['nullable', 'numeric', 'max:9999999999'],
-            'valiniziale' => ['nullable', 'decimal:0,2', 'between:0,9999999.99'],
+            'valiniziale' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
             'qtacarichi' => ['nullable', 'numeric', 'max:9999999999'],
-            'valcarichi' => ['nullable', 'decimal:0,2', 'between:0,9999999.99'],
+            'valcarichi' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
             'qtascarichi' => ['nullable', 'numeric', 'max:9999999999'],
-            'valscarichi' => ['nullable', 'decimal:0,2', 'between:0,9999999.99'],
-            'iva' => ['required', 'decimal:0,2', 'between:0,99.99'],
-            'przvendita' => ['required', 'decimal:0,2', 'between:0,999999.99'],
+            'valscarichi' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
+            'iva' => ['required', 'decimal:0,4', 'between:0,99.99'],
+            'przvendita' => ['required', 'decimal:0,4', 'between:0,999999.99'],
         ]);
         Articolo::create($form);
         return redirect('/articoli');
@@ -63,14 +63,14 @@ class ArticoloController extends Controller
             'codice' => ['required', 'max:13', Rule::unique('articoli', 'codice')->ignore($articolo->id)],
             'descrizione' => ['required', 'max:30'],
             'unitadimisura' => ['required', 'max:2'],
-            'qtainiziale' => ['required', 'numeric', 'max:9999999999'],
-            'valiniziale' => ['required', 'decimal:0,2', 'between:0,9999999.99'],
-            'qtacarichi' => ['required', 'numeric', 'max:9999999999'],
-            'valcarichi' => ['required', 'decimal:0,2', 'between:0,9999999.99'],
-            'qtascarichi' => ['required', 'numeric', 'max:9999999999'],
-            'valscarichi' => ['required', 'decimal:0,2', 'between:0,9999999.99'],
-            'iva' => ['required', 'decimal:0,2', 'between:0,99.99'],
-            'przvendita' => ['required', 'decimal:0,2', 'between:0,999999.99'],
+            'qtainiziale' => ['nullable', 'numeric', 'max:9999999999'],
+            'valiniziale' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
+            'qtacarichi' => ['nullable', 'numeric', 'max:9999999999'],
+            'valcarichi' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
+            'qtascarichi' => ['nullable', 'numeric', 'max:9999999999'],
+            'valscarichi' => ['nullable', 'decimal:0,4', 'between:0,9999999.99'],
+            'iva' => ['required', 'decimal:0,4', 'between:0,99.99'],
+            'przvendita' => ['required', 'decimal:0,4', 'between:0,999999.99'],
         ]);
         $articolo->update($form);
         return redirect('/articoli');
