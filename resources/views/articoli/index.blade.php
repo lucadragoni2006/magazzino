@@ -33,7 +33,7 @@
 					<td>{{$articolo->valscarichi}}</td>
 					<td>{{$articolo->iva}}</td>
 					<td>{{$articolo->przvendita}}</td>
-					<td>0</td>
+					<td>{{$articolo->ultimoprezzo}}</td>
 					<td>
 						<a href="/articoli/{{$articolo->id}}/edit">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" fill="currentColor" class="bi bi-pen-fill text-primary" viewBox="0 0 16 16">

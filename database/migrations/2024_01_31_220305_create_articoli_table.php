@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('codice', 13)->unique();
             $table->string('descrizione', 30)->index();
             $table->char('unitadimisura', 2);
-            $table->integer('qtainiziale');
-            $table->double('valiniziale', 9, 2);
-            $table->integer('qtacarichi');
-            $table->double('valcarichi', 9, 2);
-            $table->integer('qtascarichi');
-            $table->double('valscarichi', 9, 2);
+            $table->integer('qtainiziale')->nullable();
+            $table->double('valiniziale', 9, 2)->nullable();
+            $table->integer('qtacarichi')->nullable();
+            $table->double('valcarichi', 9, 2)->nullable();
+            $table->integer('qtascarichi')->nullable();
+            $table->double('valscarichi', 9, 2)->nullable();
             $table->double('iva', 4, 2);
             $table->double('przvendita', 8, 2);
             $table->timestamps();

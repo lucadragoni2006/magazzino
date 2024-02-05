@@ -27,14 +27,14 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaIniziale" placeholder="Quantità iniziale" name="qtainiziale" value="{{$articolo->qtainiziale}}">
+                    <input type="number" class="form-control" id="quantitaIniziale" placeholder="Quantità iniziale" name="qtainiziale" value="{{$articolo->qtainiziale}}" disabled>
                     <label for="quantitaIniziale">Quantità Iniziale</label>
                     @error('qtainiziale')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="valoreIniziale" placeholder="Valore iniziale" name="valiniziale" value="{{$articolo->valiniziale}}">
+                    <input type="text" class="form-control" id="valoreIniziale" placeholder="Valore iniziale" name="valiniziale" value="{{$articolo->valiniziale}}" disabled>
                     <label for="valoreIniziale">Valore Iniziale</label>
                     @error('valiniziale')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
@@ -43,14 +43,14 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaCarichi" placeholder="Quantità carichi" name="qtacarichi" value="{{$articolo->qtacarichi}}">
+                    <input type="number" class="form-control" id="quantitaCarichi" placeholder="Quantità carichi" name="qtacarichi" value="{{$articolo->qtacarichi}}" disabled>
                     <label for="quantitaCarichi">Quantità Carichi</label>
                     @error('qtacarichi')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="valoreCarichi" placeholder="Valore carichi" name="valcarichi" value="{{$articolo->valcarichi}}">
+                    <input type="text" class="form-control" id="valoreCarichi" placeholder="Valore carichi" name="valcarichi" value="{{$articolo->valcarichi}}" disabled>
                     <label for="valoreCarichi">Valore Carichi</label>
                     @error('valcarichi')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
@@ -59,14 +59,14 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="number" class="form-control" id="quantitaScarichi" placeholder="Quantità scarichi" name="qtascarichi" value="{{$articolo->qtacarichi}}">
+                    <input type="number" class="form-control" id="quantitaScarichi" placeholder="Quantità scarichi" name="qtascarichi" value="{{$articolo->qtacarichi}}" disabled>
                     <label for="quantitaScarichi">Quantità Scarichi</label>
                     @error('qtascarichi')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="valoreScarichi" placeholder="Valore scarichi" name="valscarichi" value="{{$articolo->valscarichi}}">
+                    <input type="text" class="form-control" id="valoreScarichi" placeholder="Valore scarichi" name="valscarichi" value="{{$articolo->valscarichi}}" disabled>
                     <label for="valoreScarichi">Valore Scarichi</label>
                     @error('valscarichi')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
