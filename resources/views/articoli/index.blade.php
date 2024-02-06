@@ -1,5 +1,13 @@
 <x-layout>
-	<div class="d-flex justify-content-center align-items-center" style="min-height: 85vh">
+	<div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 85vh">
+		<div class="d-flex gap-3 my-3">
+			<h2>Aggiungi un articolo</h2>
+			<a href="/articoli/create">
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" fill="currentColor" class="bi bi-plus-circle-fill text-danger" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+				</svg>
+			</a>
+		</div>
 		<table class="table table-striped table-hover table-secondary table-borderless w-100 p-5">
 			<thead class="table-dark m-1">
 				<tr>
@@ -56,8 +64,8 @@
 				@endforeach
 			</tbody>
 		</table>
-	</div>
-	<div class="d-flex justify-content-center">
-		{{$articoli->links()}}
+		<div class="d-flex justify-content-center mt-5">
+			{{$articoli->links()}}
+		</div>
 	</div>
 </x-layout>

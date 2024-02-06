@@ -22,13 +22,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-center" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a href="/" class="navbar-brand">
-                Magazzino
-                <i class="bi bi-house-fill align-text-bottom"></i>
-            </a>
-            <div class="collapse navbar-collapse ms-2" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1 mx-auto">
+        <div class="container-fluid p-0 pe-4">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-1">
                     <li class="nav-item mx-3" style="font-size: 1.25rem">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
@@ -39,7 +35,7 @@
                         <a class="nav-link active" href="/movimenti">Movimenti</a>
                     </li>
                     <li class="nav-item mx-3" style="font-size: 1.25rem">
-                        <form class="nav-link active" action="/logout" method="POST" style="color: white;">
+                        <form class="nav-link active lh-sm" action="/logout" method="POST" style="color: white;">
                             @csrf
                             <button type="submit" class="bg-transparent border-0">
                                 Logout
