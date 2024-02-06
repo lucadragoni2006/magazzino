@@ -54,10 +54,10 @@ Route::post('/movimenti/store', [MovimentoController::class, 'store'])->middlewa
 
 
 // Mostra login form
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // Login 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Logout
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');

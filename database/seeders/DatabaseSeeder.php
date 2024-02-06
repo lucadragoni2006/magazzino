@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        \App\Models\User::factory()->create([
-            'username' => 'Luca',
-            'password' => '1234',
-        ]);
+        \App\Models\User::factory()->create(['username' => 'Luca', 'password' => '1234']);
+        \App\Models\User::factory()->create(['username' => 'Massimo', 'password' => '1234']);
+        \App\Models\User::factory()->create(['username' => 'Alessandro', 'password' => '1234']);
     }
 }

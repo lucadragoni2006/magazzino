@@ -11,7 +11,7 @@
             </div>
             <div class="row">
                 <div class="col form-floating mb-3 ps-1">
-                    <input type="text" class="form-control" id="cod" placeholder="Codice" name="codice" value="{{$articolo->codice}}">
+                    <input type="text" class="form-control" id="cod" placeholder="Codice" name="codice" value="{{$articolo->codice}}" disabled>
                     <label for="cod">Codice</label>
                     @error('codice')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
