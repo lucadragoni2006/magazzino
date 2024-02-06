@@ -1,6 +1,6 @@
 <x-layout>
     <div class="d-flex justify-content-center align-items-center" style="min-height: 85vh">
-        <form action="/movimenti/store" method="POST" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
+        <form action="/movimenti/{{$movimento->id}}" method="POST" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
             @csrf
             @method('PUT')
             <div class="mb-5 text-center">
@@ -37,11 +37,9 @@
                 <div class="mb-3 ps-1">
                     <select class="form-select" aria-label="Default select example" name="causale">
                         <option selected disabled>Causale</option>
-                        <option value="0">Saldo Iniziale</option>
-                        <option value="1">Acquisto</option>
-                        <option value="2">Vendita</option>
-                        <option value="3">Reso Cliente</option>
-                        <option value="4">Reso Fornitore</option>
+                        @foreach ($options as $option)
+                            <option value="{{$option}}" {{($option == old('causale', $movimento->causale)) ? 'selected' : ''}}>{{$option}}</option>
+                        @endforeach
                     </select>
                     @error('causale')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  

@@ -10,32 +10,57 @@ use Illuminate\Validation\Rule as ValidationRule;
 
 class MovimentoController extends Controller
 {
-    // Funzione variazione Articolo in base a causale
-    public static function variaCausale(Articolo $articolo, $form) {
+    // Metodo variazione Articolo in base a causale
+    public static function variaCausale(Articolo $articolo, $form, $flag) {
         switch ($form['causale']) {
-            case '0':
-                $articolo['qtainiziale'] += $form['qtamovimentata'];
-                $articolo['valiniziale'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+            case 'Saldo Iniziale':
+                if($flag) {
+                    $articolo['qtainiziale'] += $form['qtamovimentata'];
+                    $articolo['valiniziale'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                } else {
+                    $articolo['qtainiziale'] -= $form['qtamovimentata'];
+                    $articolo['valiniziale'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                }
                 break;
             
-            case '1':
-                $articolo['qtacarichi'] += $form['qtamovimentata'];
-                $articolo['valcarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+            case 'Acquisto':
+                if($flag) {
+                    $articolo['qtacarichi'] += $form['qtamovimentata'];
+                    $articolo['valcarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                } else {
+                    $articolo['qtacarichi'] -= $form['qtamovimentata'];
+                    $articolo['valcarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                }
                 break;
 
-            case '2':
-                $articolo['qtascarichi'] += $form['qtamovimentata'];
-                $articolo['valscarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+            case 'Vendita':
+                if($flag) {
+                    $articolo['qtascarichi'] += $form['qtamovimentata'];
+                    $articolo['valscarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                } else {
+                    $articolo['qtascarichi'] -= $form['qtamovimentata'];
+                    $articolo['valscarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                }
                 break;
             
-            case '3':
-                $articolo['qtascarichi'] -= $form['qtamovimentata'];
-                $articolo['valscarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+            case 'Reso Cliente':
+                if($flag) {
+                    $articolo['qtascarichi'] -= $form['qtamovimentata'];
+                    $articolo['valscarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                } else {
+                    $articolo['qtascarichi'] += $form['qtamovimentata'];
+                    $articolo['valscarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                }
                 break;
             
-            case '4':
-                $articolo['qtacarichi'] -= $form['qtamovimentata'];
-                $articolo['valcarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+            case 'Reso da Fornitore':
+                if($flag) {
+                    $articolo['qtacarichi'] -= $form['qtamovimentata'];
+                    $articolo['valcarichi'] -= $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                } else {
+                    $articolo['qtacarichi'] += $form['qtamovimentata'];
+                    $articolo['valcarichi'] += $form['qtamovimentata'] * $form['valunitario'] - $form['sconto'];
+                }
                 break;
             
             default:
@@ -60,7 +85,7 @@ class MovimentoController extends Controller
         $form = $request->validate([
             'codice' => ['required', 'exists:articoli,codice'],
             'qtamovimentata' => ['required', 'max:9999999999'], 
-            'causale' => ['required', 'between:0,4'],
+            'causale' => ['required'],
             'datadocumento' => ['required', 'date'],
             'numdocumento' => ['required', 'max:9999999999'],
             'valunitario' => ['required', 'decimal:0,4', 'between:0,99999.99'],
@@ -68,7 +93,7 @@ class MovimentoController extends Controller
         ]);
 
         $articolo = Articolo::all()->where('codice', 'like', $form['codice'])->first();
-        MovimentoController::variaCausale($articolo, $form);
+        MovimentoController::variaCausale($articolo, $form, true);
         $articolo->update($articolo->getAttributes());
         Movimento::create($form);
         return redirect('/movimenti');
@@ -83,7 +108,11 @@ class MovimentoController extends Controller
     // Visualizza form per la modifica movimento
     public function edit(Movimento $movimento) {
         $articolo = Articolo::all()->where('codice', 'like', $movimento['codice'])->first()->getAttributes();
-        return view('movimenti.edit', ['movimento' => $movimento], ['descrizione' => $articolo['descrizione']]);
+        $options = ['Saldo Iniziale', 'Acquisto', 'Vendita', 'Reso Cliente', 'Reso da Fornitore'];
+        return view('movimenti.edit')
+            ->with('movimento', $movimento)
+            ->with('options', $options)
+            ->with('descrizione', $articolo['descrizione']);
     }
 
     // Modifica il movimento selezionato con conseguenze sui campi dell'articolo
@@ -91,13 +120,18 @@ class MovimentoController extends Controller
         $form = $request->validate([
             'codice' => ['required', 'exists:articoli,codice'],
             'qtamovimentata' => ['required', 'max:9999999999'], 
-            'causale' => ['required', 'between:0,4'],
+            'causale' => ['required'],
             'datadocumento' => ['required', 'date'],
             'numdocumento' => ['required', 'max:9999999999'],
             'valunitario' => ['required', 'decimal:0,4', 'between:0,99999.99'],
             'sconto' => ['decimal:0,4', 'between:0,99.99'],
         ]);
-        $articolo = Articolo::all()->where('codice', 'like', $form['codice'])->first();
-        dd($articolo);
+        $articolo = Articolo::all()->where('codice', 'like', $movimento->codice)->first();
+        MovimentoController::variaCausale($articolo, $movimento->getAttributes(), false);
+        $articolo->update($articolo->getAttributes());
+        MovimentoController::variaCausale($articolo, $form, true);
+        $articolo->update($articolo->getAttributes());
+        $movimento->update($form);
+        return redirect('/movimenti');
     }
 }

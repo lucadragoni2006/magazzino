@@ -36,11 +36,11 @@
                 <div class="mb-3 ps-1">
                     <select class="form-select" aria-label="Default select example" name="causale">
                         <option selected disabled>Causale</option>
-                        <option value="0">Saldo Iniziale</option>
-                        <option value="1">Acquisto</option>
-                        <option value="2">Vendita</option>
-                        <option value="3">Reso Cliente</option>
-                        <option value="4">Reso Fornitore</option>
+                        <option value="Saldo Iniziale">Saldo Iniziale</option>
+                        <option value="Acquisto">Acquisto</option>
+                        <option value="Vendita">Vendita</option>
+                        <option value="Reso Cliente">Reso Cliente</option>
+                        <option value="Reso da Fornitore">Reso da Fornitore</option>
                     </select>
                     @error('causale')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  

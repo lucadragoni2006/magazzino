@@ -16,7 +16,7 @@ class ArticoloController extends Controller
             $movimenti = Movimento::all()->where('codice', 'like', $articolo['codice'])->sortByDesc('datadocumento');
             $articolo['ultimoprezzo'] = NULL;
             foreach($movimenti as $movimento) {
-                if($movimento['causale'] == 1) {
+                if($movimento['causale'] == 'Acquisto') {
                     $articolo['ultimoprezzo'] = $movimento['valunitario'];
                     break;
                 }
@@ -60,7 +60,7 @@ class ArticoloController extends Controller
     // Modifica l'articolo selezionato
     public function update(Request $request, Articolo $articolo) {
         $form = $request->validate([
-            'codice' => ['required', 'max:13', Rule::unique('articoli', 'codice')->ignore($articolo->id)],
+            'codice' => ['max:13', Rule::unique('articoli', 'codice')->ignore($articolo->id)],
             'descrizione' => ['required', 'max:30'],
             'unitadimisura' => ['required', 'max:2'],
             'qtainiziale' => ['nullable', 'numeric', 'max:9999999999'],

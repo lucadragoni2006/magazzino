@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('codice', 13);
             $table->foreign('codice')->references('codice')->on('articoli')->constrained()->onDelete('cascade');
             $table->integer('qtamovimentata');
-            $table->tinyInteger('causale');
+            $table->string('causale', 20);
             $table->date('datadocumento');
             $table->integer('numdocumento');
             $table->double('valunitario', 7, 2);

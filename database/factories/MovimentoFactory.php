@@ -17,7 +17,7 @@ class MovimentoFactory extends Factory
     public function definition(): array
     {
         return [
-            'causale' => $this->faker->numberBetween(0, 4),
+            'causale' => $this->faker->randomElement(['Saldo Iniziale', 'Acquisto', 'Vendita', 'Reso Cliente', 'Reso da Fornitore']),
             'numdocumento' => $this->faker->numberBetween(10000, 99999),
             'datadocumento' => $this->faker->date(),
             'qtamovimentata' => $this->faker->numberBetween(1, 100),
