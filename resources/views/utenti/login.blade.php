@@ -19,10 +19,16 @@
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
             <label for="floatingInput">Username</label>
+            @error('username')
+                <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>    
+            @enderror
         </div>
         <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
             <label for="floatingPassword">Password</label>
+            @error('password')
+                <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Submit</button>
     </form>

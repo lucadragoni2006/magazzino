@@ -19,45 +19,45 @@ use App\Http\Controllers\MovimentoController;
 
 Route::get('/', function() {
     return view('home');
-});
+})->middleware('auth');
 
 // Mostra la tabella Articoli
-Route::get('/articoli', [ArticoloController::class, 'index']);
+Route::get('/articoli', [ArticoloController::class, 'index'])->middleware('auth');
 
 // Elimina l'articolo selezionato
-Route::delete('/articoli/{articolo}/delete', [ArticoloController::class, 'delete']);
+Route::delete('/articoli/{articolo}/delete', [ArticoloController::class, 'delete'])->middleware('auth');
 
 // Mostra il form articoli
-Route::get('/articoli/create', [ArticoloController::class, 'create']);
+Route::get('/articoli/create', [ArticoloController::class, 'create'])->middleware('auth');
 
 // Crea un nuovo articolo
-Route::post('/articoli/store', [ArticoloController::class, 'store']);
+Route::post('/articoli/store', [ArticoloController::class, 'store'])->middleware('auth');
 
 // Mostra il form per la modifica articolo
-Route::get('/articoli/{articolo}/edit', [ArticoloController::class, 'edit']);
+Route::get('/articoli/{articolo}/edit', [ArticoloController::class, 'edit'])->middleware('auth');
 
 // Modifica l'articolo selezionato
-Route::put('/articoli/{articolo}', [ArticoloController::class, 'update']);
+Route::put('/articoli/{articolo}', [ArticoloController::class, 'update'])->middleware('auth');
 
 
 // Mostra la tabella Movimenti
-Route::get('/movimenti', [MovimentoController::class, 'index']);
+Route::get('/movimenti', [MovimentoController::class, 'index'])->middleware('auth');
 
 // Elimina l'articolo selezionato
-Route::delete('/movimenti/{movimento}/delete', [MovimentoController::class, 'delete']);
+Route::delete('/movimenti/{movimento}/delete', [MovimentoController::class, 'delete'])->middleware('auth');
 
 // Mostra il form Movimenti
-Route::get('/movimenti/create', [MovimentoController::class, 'create']);
+Route::get('/movimenti/create', [MovimentoController::class, 'create'])->middleware('auth');
 
 // Crea un nuovo movimento
-Route::post('/movimenti/store', [MovimentoController::class, 'store']);
+Route::post('/movimenti/store', [MovimentoController::class, 'store'])->middleware('auth');
 
 
 // Mostra login form
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 // Login 
-Route::post('/users/login', [UserController::class, 'authenticate']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Logout
 Route::post('/logout', [UserController::class, 'logout']);

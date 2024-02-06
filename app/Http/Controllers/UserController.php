@@ -30,6 +30,6 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/');
         }
-        return back();
+        return back()->withErrors(['username' => 'Credenziali non valide'])->onlyInput('username');
     }
 }
