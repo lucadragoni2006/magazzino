@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 85vh">
         <form method="POST" action="/articoli/store" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
             @csrf
             <div class="mb-5 text-center">

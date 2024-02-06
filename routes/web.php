@@ -52,6 +52,12 @@ Route::get('/movimenti/create', [MovimentoController::class, 'create'])->middlew
 // Crea un nuovo movimento
 Route::post('/movimenti/store', [MovimentoController::class, 'store'])->middleware('auth');
 
+// Mostra il form per la modifica articolo
+Route::get('/movimenti/{movimento}/edit', [MovimentoController::class, 'edit'])->middleware('auth');
+
+// Modifica l'elemento selezionato con relative conseguenze sui campi dell'articolo
+Route::put('/movimenti/{movimento}', [MovimentoController::class, 'update'])->middleware('auth');
+
 
 // Mostra login form
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');

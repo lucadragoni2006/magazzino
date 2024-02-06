@@ -64,7 +64,7 @@ class MovimentoController extends Controller
             'datadocumento' => ['required', 'date'],
             'numdocumento' => ['required', 'max:9999999999'],
             'valunitario' => ['required', 'decimal:0,4', 'between:0,99999.99'],
-            'sconto' => ['decimal:0,2', 'between:0,99.99'],
+            'sconto' => ['decimal:0,4', 'between:0,99.99'],
         ]);
 
         $articolo = Articolo::all()->where('codice', 'like', $form['codice'])->first();
@@ -78,5 +78,26 @@ class MovimentoController extends Controller
     public function delete(Movimento $movimento) {
         $movimento->delete();
         return redirect('/movimenti');
+    }
+
+    // Visualizza form per la modifica movimento
+    public function edit(Movimento $movimento) {
+        $articolo = Articolo::all()->where('codice', 'like', $movimento['codice'])->first()->getAttributes();
+        return view('movimenti.edit', ['movimento' => $movimento], ['descrizione' => $articolo['descrizione']]);
+    }
+
+    // Modifica il movimento selezionato con conseguenze sui campi dell'articolo
+    public function update(Request $request, Movimento $movimento) {
+        $form = $request->validate([
+            'codice' => ['required', 'exists:articoli,codice'],
+            'qtamovimentata' => ['required', 'max:9999999999'], 
+            'causale' => ['required', 'between:0,4'],
+            'datadocumento' => ['required', 'date'],
+            'numdocumento' => ['required', 'max:9999999999'],
+            'valunitario' => ['required', 'decimal:0,4', 'between:0,99999.99'],
+            'sconto' => ['decimal:0,4', 'between:0,99.99'],
+        ]);
+        $articolo = Articolo::all()->where('codice', 'like', $form['codice'])->first();
+        dd($articolo);
     }
 }

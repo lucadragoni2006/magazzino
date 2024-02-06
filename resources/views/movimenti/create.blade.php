@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 85vh">
         <form action="/movimenti/store" method="POST" class="container align-itmes-center justify-content-center shadow p-4 rounded w-25">
             @csrf
             <div class="mb-5 text-center">
@@ -77,12 +77,6 @@
                     @error('sconto')
                         <p class="text-danger" style="font-size: 0.75rem">{{$message}}</p>  
                     @enderror
-                </div>
-            </div>
-            <div class="row">
-                <div class="col form-floating-mb3 ps-1">
-                    <input type="text" class="form-control" name="costo" id="costo" placeholder="Costo" disabled>
-                    <label for="costo"></label>
                 </div>
             </div>
             <div class="row">
