@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticoloController;
 use App\Http\Controllers\MovimentoController;
 
@@ -15,18 +16,10 @@ use App\Http\Controllers\MovimentoController;
 |
 */
 
-Route::get('/login', function () {
-    return view('utenti.login');
-});
-
-Route::get('/movimenti/create', function () {
-    return view('movimenti.create');
-});
 
 Route::get('/', function() {
     return view('home');
 });
-
 
 // Mostra la tabella Articoli
 Route::get('/articoli', [ArticoloController::class, 'index']);
@@ -58,3 +51,13 @@ Route::get('/movimenti/create', [MovimentoController::class, 'create']);
 
 // Crea un nuovo movimento
 Route::post('/movimenti/store', [MovimentoController::class, 'store']);
+
+
+// Mostra login form
+Route::get('/login', [UserController::class, 'login']);
+
+// Login 
+Route::post('/users/login', [UserController::class, 'authenticate']);
+
+// Logout
+Route::post('/logout', [UserController::class, 'logout']);

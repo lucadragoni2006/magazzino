@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
-    <form class="d-flex align-itmes-center justify-content-center flex-column shadow p-4 rounded" style="width: 350px; height: 400px">
+    <form action="/users/authenticate" method="POST" class="d-flex align-itmes-center justify-content-center flex-column shadow p-4 rounded" style="width: 350px; height: 400px">
+        @csrf
         <div class="mb-5 text-center">
             <h2>Sign In</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="60" fill="currentColor" class="bi bi-person mt-2 p-2 rounded-circle bg-primary" viewBox="0 0 16 16">
@@ -16,8 +17,8 @@
             </svg>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-            <label for="floatingInput">Email address</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+            <label for="floatingInput">Username</label>
         </div>
         <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
